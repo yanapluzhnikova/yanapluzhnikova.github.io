@@ -4,142 +4,234 @@
   <meta charset="UTF-8" />
   <title>Плужникова Яна — резюме</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Nunito -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f6f9ff;
+      --bg: #050608;
       --bg-card: #ffffff;
-      --accent: #2f80ed;
-      --accent-soft: #e6f0ff;
-      --text-main: #1f2933;
+      --accent: #4f46e5;
+      --accent-soft: #e0e7ff;
+      --accent-strong: #111827;
+      --text-main: #0b1120;
       --text-muted: #6b7280;
-      --border-soft: #e2e8f0;
-      --chip-bg: #edf2ff;
-      --chip-text: #1e40af;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.07);
-      --radius-xl: 28px;
-      --radius-l: 18px;
+      --border-soft: #e5e7eb;
+      --chip-bg: #eef2ff;
+      --chip-text: #111827;
+      --shadow-soft: 0 28px 70px rgba(15, 23, 42, 0.65);
+      --radius-xl: 32px;
+      --radius-l: 22px;
       --radius-chip: 999px;
-      --max-width: 1080px;
+      --max-width: 1120px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
       padding: 0;
       font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #e0f2fe 0, #f6f9ff 40%, #ffffff 100%);
+      background: radial-gradient(circle at top left, #111827 0, #020617 35%, #000000 100%);
       color: var(--text-main);
+      scroll-behavior: smooth;
     }
 
     .page {
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 32px 16px 48px;
+      padding: 40px 16px 56px;
     }
 
     .container {
       width: 100%;
       max-width: var(--max-width);
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 32px;
+      background: #f9fafb;
+      border-radius: 36px;
       box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(22px);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      padding: 28px 28px 32px;
+      border: 1px solid #111827;
+      overflow: hidden;
     }
 
-    @media (min-width: 900px) {
-      .container {
-        padding: 32px 36px 40px;
-      }
-    }
-
-    .header {
+    .layout-shell {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 28px;
-      align-items: center;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 45%, #ffffff 100%);
-      padding: 24px 22px;
-      margin-bottom: 28px;
+      grid-template-rows: auto 1fr auto;
+      background: #ffffff;
     }
 
-    @media (max-width: 768px) {
-      .header {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 20px 18px;
-      }
-    }
-
-    .header-main-title {
+    /* Навигация */
+    .top-nav {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px 18px;
+      border-bottom: 1px solid #e5e7eb;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-nav__logo {
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: #111827;
+    }
+
+    .top-nav__menu {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .top-nav__link {
+      position: relative;
+      padding-bottom: 4px;
+      color: #6b7280;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav__link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.22s ease;
+    }
+
+    .top-nav__link:hover {
+      color: #111827;
+    }
+
+    .top-nav__link--active {
+      color: #111827;
+    }
+
+    .top-nav__link--active::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .top-nav {
+        padding-inline: 18px;
+      }
+
+      .top-nav__menu {
+        gap: 12px;
+        font-size: 11px;
+      }
+
+      .top-nav__logo {
+        font-size: 11px;
+      }
+    }
+
+    /* Хиро-блок */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      padding: 30px 32px 26px;
+      gap: 32px;
+      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(90deg, #ffffff 0%, #f3f4ff 45%, #e0e7ff 100%);
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 24px 20px 20px;
+      }
+    }
+
+    .hero-main-title {
+      display: flex;
+      align-items: baseline;
       gap: 16px;
       margin-bottom: 10px;
     }
 
-    .name {
-      font-size: clamp(26px, 3vw, 30px);
-      font-weight: 800;
-      letter-spacing: 0.03em;
+    .hero-name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
       text-transform: uppercase;
-      color: #0f172a;
+      letter-spacing: 0.25em;
+      color: #9ca3af;
+    }
+
+    .name {
+      font-size: clamp(30px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111827;
+      line-height: 1.1;
     }
 
     .tag-pill {
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 4px 12px;
+      letter-spacing: 0.15em;
+      padding: 6px 14px;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.07);
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      color: #1d4ed8;
-      font-weight: 600;
+      background: #111827;
+      color: #f9fafb;
+      font-weight: 700;
       white-space: nowrap;
+      border: 1px solid #111827;
     }
 
     .subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.45;
+      font-size: 16px;
+      color: #4b5563;
+      max-width: 560px;
+      line-height: 1.65;
+      margin: 4px 0 0;
     }
 
     .contacts {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 18px;
     }
 
     .contact-chip {
       display: inline-flex;
-      align-items: center;
+      align-items: baseline;
       gap: 6px;
-      padding: 6px 11px;
+      padding: 7px 12px;
       border-radius: var(--radius-chip);
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(17, 24, 39, 0.1);
       font-size: 13px;
-      color: var(--text-main);
+      color: #111827;
+      backdrop-filter: blur(8px);
     }
 
     .contact-label {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
     }
 
     .contact-value {
@@ -152,7 +244,7 @@
       justify-content: flex-end;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
       .photo-wrapper {
         justify-content: flex-start;
       }
@@ -160,64 +252,99 @@
 
     .photo-card {
       position: relative;
-      padding: 10px;
+      padding: 14px;
       border-radius: 999px;
-      background: radial-gradient(circle at top, #bfdbfe 0, #e5edff 40%, #ffffff 100%);
-      box-shadow: 0 16px 40px rgba(30, 64, 175, 0.25);
+      background: radial-gradient(circle at top, #6366f1 0, #4f46e5 36%, #111827 100%);
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.75);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
-    .photo-card::before {
-      content: "";
+    .photo-ring {
       position: absolute;
       inset: 10px;
       border-radius: inherit;
-      border: 1px dashed rgba(59, 130, 246, 0.3);
+      border: 1px solid rgba(249, 250, 251, 0.45);
+      mix-blend-mode: screen;
       pointer-events: none;
     }
 
     .photo {
       display: block;
-      width: 150px;
-      height: 150px;
+      width: 190px;
+      height: 190px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #ffffff;
+      border: 4px solid rgba(249, 250, 251, 0.95);
       z-index: 1;
+      transform: translateY(0);
+      transition: transform 0.35s ease;
     }
 
-    @media (min-width: 1100px) {
+    .photo-card:hover .photo {
+      transform: translateY(-6px);
+    }
+
+    @media (min-width: 1120px) {
       .photo {
-        width: 170px;
-        height: 170px;
+        width: 210px;
+        height: 210px;
       }
     }
 
-    .main-grid {
+    /* Основной контент */
+    .content {
+      padding: 26px 32px 30px;
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.35fr);
+      grid-template-columns: minmax(0, 2.05fr) minmax(0, 1.4fr);
       gap: 24px;
     }
 
     @media (max-width: 960px) {
-      .main-grid {
+      .content {
         grid-template-columns: minmax(0, 1fr);
+        padding: 20px 20px 24px;
       }
     }
 
     .column {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
     }
 
     .section {
       background: var(--bg-card);
       border-radius: var(--radius-l);
-      padding: 16px 18px 17px;
+      padding: 18px 18px 17px;
       border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(147, 51, 234, 0.08));
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+      border-color: rgba(17, 24, 39, 0.35);
+      background: #f9fafb;
+    }
+
+    .section:hover::before {
+      opacity: 1;
     }
 
     .section-header {
@@ -226,14 +353,16 @@
       justify-content: space-between;
       gap: 10px;
       margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
     }
 
     .section-title {
       font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #1d4ed8;
+      color: #111827;
     }
 
     .section-subtitle {
@@ -244,10 +373,13 @@
     .section-body {
       font-size: 14px;
       color: var(--text-main);
+      position: relative;
+      z-index: 1;
     }
 
     .about-text {
-      line-height: 1.55;
+      line-height: 1.7;
+      font-size: 15px;
     }
 
     .chips {
@@ -258,19 +390,30 @@
     }
 
     .chip {
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: var(--radius-chip);
       background: var(--chip-bg);
       color: var(--chip-text);
       font-size: 12px;
-      font-weight: 600;
-      border: 1px solid rgba(129, 140, 248, 0.5);
+      font-weight: 700;
+      border: 1px solid #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      cursor: default;
+    }
+
+    .chip:hover {
+      background: #111827;
+      color: #f9fafb;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(15, 23, 42, 0.35);
     }
 
     .list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 11px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -279,26 +422,30 @@
     .item-title-row {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 2px;
+      gap: 12px;
+      margin-bottom: 3px;
     }
 
     .item-title {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     .item-meta {
       font-size: 12px;
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
       white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
     .item-sub {
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     .item-bullets {
@@ -306,16 +453,16 @@
       padding-left: 18px;
       font-size: 13px;
       color: var(--text-main);
-      line-height: 1.45;
+      line-height: 1.6;
     }
 
     .item-bullets li + li {
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .lang-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 8px;
       margin-top: 4px;
     }
@@ -324,29 +471,33 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 9px;
+      padding: 8px 10px;
       border-radius: 999px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
       font-size: 13px;
     }
 
     .badge {
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.13em;
       padding: 3px 8px;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      color: #1d4ed8;
+      background: #111827;
+      color: #f9fafb;
     }
 
     .footer-note {
-      margin-top: 18px;
+      padding: 14px 32px 18px;
+      border-top: 1px solid #e5e7eb;
       font-size: 12px;
       color: var(--text-muted);
       text-align: right;
+      background: #f9fafb;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
 
     a {
@@ -357,20 +508,38 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .anchor {
+      scroll-margin-top: 90px;
+    }
   </style>
 </head>
 <body>
   <div class="page">
-    <main class="container">
-      <!-- Шапка -->
-      <header class="header">
+    <main class="container layout-shell">
+      <nav class="top-nav">
+        <div class="top-nav__logo">ПЛУЖНИКОВА&nbsp;ЯНА</div>
+        <div class="top-nav__menu">
+          <a href="#about" class="top-nav__link top-nav__link--active" data-nav="about">Обо мне</a>
+          <a href="#experience" class="top-nav__link" data-nav="experience">Опыт</a>
+          <a href="#skills" class="top-nav__link" data-nav="skills">Навыки</a>
+          <a href="#education" class="top-nav__link" data-nav="education">Образование</a>
+          <a href="#extra" class="top-nav__link" data-nav="extra">Дополнительно</a>
+        </div>
+      </nav>
+
+      <header class="hero">
         <div>
-          <div class="header-main-title">
-            <h1 class="name">Плужникова Яна</h1>
+          <div class="hero-main-title">
+            <div class="hero-name-block">
+              <div class="hero-eyebrow">КТО Я</div>
+              <h1 class="name">Плужникова&nbsp;Яна</h1>
+            </div>
             <div class="tag-pill">Marketing / Product</div>
           </div>
           <p class="subtitle">
-            Маркетинговый аналитик и контент‑продюсер с опытом в HR‑маркетинге, диджитал‑коммуникациях и продуктовой аналитике. Ищу возможности развиваться в маркетинге и продукт‑менеджменте.
+            Маркетинговый аналитик и контент‑продюсер с опытом в HR‑маркетинге, диджитал‑коммуникациях и продуктовой аналитике.
+            Ищу возможности развиваться в маркетинге и продукт‑менеджменте.
           </p>
           <div class="contacts">
             <div class="contact-chip">
@@ -393,29 +562,27 @@
         </div>
         <div class="photo-wrapper">
           <div class="photo-card">
-            <!-- Замените путь на актуальный или положите фото рядом с index.html и назовите yana-photo.png -->
-            <img src="yana-photo.png" alt="Портрет Плужниковой Яны" class="photo" />
+            <span class="photo-ring"></span>
+            <!-- Положите файл с фото рядом с этим HTML и назовите его IMG_9557.png -->
+            <img src="IMG_9557.png" alt="Портрет Плужниковой Яны" class="photo" />
           </div>
         </div>
       </header>
 
-      <div class="main-grid">
-        <!-- Левая колонка -->
+      <div class="content">
         <section class="column">
-          <!-- Обо мне -->
-          <section class="section">
+          <section class="section anchor" id="about">
             <div class="section-header">
               <h2 class="section-title">Обо мне</h2>
             </div>
             <div class="section-body about-text">
-              Мои профессиональные интересы связаны с маркетингом и продуктовым менеджментом. Открытость помогает мне находить общий язык с новыми людьми и быть лидером команд, достигающих высоких результатов.
-              Благодаря ответственности и организованности я соблюдаю дедлайны и грамотно распределяю время — своё и команды.
-              Я постоянно развиваюсь и осваиваю новые навыки, чтобы стать востребованным и высококлассным специалистом.
+              Мои профессиональные интересы связаны с маркетингом и продуктовым менеджментом. Открытость помогает мне находить общий язык с новыми людьми и
+              быть лидером команд, достигающих высоких результатов. Благодаря ответственности и организованности я соблюдаю дедлайны и грамотно распределяю
+              время — своё и команды. Постоянно развиваюсь и осваиваю новые навыки, чтобы быть востребованным и сильным специалистом.
             </div>
           </section>
 
-          <!-- Опыт работы -->
-          <section class="section">
+          <section class="section anchor" id="experience">
             <div class="section-header">
               <h2 class="section-title">Опыт работы</h2>
             </div>
@@ -428,11 +595,11 @@
                   </div>
                   <div class="item-sub">Отдел HR‑маркетинга и бренда работодателя</div>
                   <ul class="item-bullets">
-                    <li>Глубокий анализ аудитории Telegram‑каналов и эффективности контента по ключевым метрикам для выявления точек роста и формирования контент‑стратегии.</li>
+                    <li>Анализ аудитории Telegram‑каналов и эффективности контента по ключевым метрикам для поиска точек роста и формирования стратегии.</li>
                     <li>Тестирование гипотез по форматам, времени публикации и механикам вовлечения.</li>
-                    <li>Подготовка регулярных отчётов и дашбордов, формулировка data‑driven рекомендаций по оптимизации контента и эффективности каналов.</li>
+                    <li>Подготовка отчётов и дашбордов, формулировка data‑driven рекомендаций по оптимизации контента и эффективности каналов.</li>
                     <li>Разработка и внедрение SMM‑стратегий, планирование и создание контент‑планов на основе анализа рынка и ЦА.</li>
-                    <li>Координация полного цикла производства контента и команды для своевременного выпуска материалов в соответствии со стратегией.</li>
+                    <li>Координация полного цикла производства контента и команды для своевременного выпуска материалов.</li>
                   </ul>
                 </li>
 
@@ -442,7 +609,7 @@
                     <div class="item-meta">2025</div>
                   </div>
                   <ul class="item-bullets">
-                    <li>Написание текстов для соцсетей, адаптированных под целевую аудиторию, дизайн обложек для постов.</li>
+                    <li>Написание текстов для соцсетей, адаптированных под целевую аудиторию; дизайн обложек для постов.</li>
                     <li>Создание и дизайн страниц сайта, презентаций, гайдов и чек‑листов для увеличения конверсии.</li>
                     <li>Создание email‑рассылок.</li>
                   </ul>
@@ -469,15 +636,14 @@
                   <ul class="item-bullets">
                     <li>Адаптация упражнений и заданий для более глубокого освоения тем.</li>
                     <li>Цифровизация учебного процесса и перенос модулей на платформы электронного обучения.</li>
-                    <li>Техническая координация и сопровождение внедрения новых цифровых инструментов в образовательный процесс.</li>
+                    <li>Техническая координация и сопровождение внедрения новых цифровых инструментов.</li>
                   </ul>
                 </li>
               </ul>
             </div>
           </section>
 
-          <!-- Волонтёрство и активность -->
-          <section class="section">
+          <section class="section anchor" id="extra">
             <div class="section-header">
               <h2 class="section-title">Волонтёрство и активность</h2>
             </div>
@@ -486,11 +652,11 @@
                 <li>
                   <div class="item-title-row">
                     <div class="item-title">Волонтёрство</div>
-                    <div class="item-meta">2022 — настоящее время</div>
+                    <div class="item-meta">2022 — наст. время</div>
                   </div>
                   <ul class="item-bullets">
                     <li>«День карьеры» Школы иностранных языков НИУ ВШЭ.</li>
-                    <li>Международная научно‑практическая конференция LED Conference (Languages, Education, Development).</li>
+                    <li>Международная научно‑практическая конференция LED Conference.</li>
                     <li>Дни открытых дверей Школы иностранных языков и программы «Иностранные языки и межкультурная коммуникация».</li>
                     <li>Олимпиада «Высшая проба».</li>
                   </ul>
@@ -499,7 +665,7 @@
                 <li>
                   <div class="item-title-row">
                     <div class="item-title">Кураторство первокурсников</div>
-                    <div class="item-meta">2023 — настоящее время</div>
+                    <div class="item-meta">2023 — наст. время</div>
                   </div>
                   <ul class="item-bullets">
                     <li>Помогаю студентам адаптироваться в новой среде, выстраивать коммуникацию с преподавателями и одногруппниками.</li>
@@ -522,10 +688,8 @@
           </section>
         </section>
 
-        <!-- Правая колонка -->
         <section class="column">
-          <!-- Навыки -->
-          <section class="section">
+          <section class="section anchor" id="skills">
             <div class="section-header">
               <h2 class="section-title">Навыки</h2>
             </div>
@@ -549,7 +713,6 @@
             </div>
           </section>
 
-          <!-- Языки -->
           <section class="section">
             <div class="section-header">
               <h2 class="section-title">Языки</h2>
@@ -580,8 +743,7 @@
             </div>
           </section>
 
-          <!-- Образование -->
-          <section class="section">
+          <section class="section anchor" id="education">
             <div class="section-header">
               <h2 class="section-title">Образование</h2>
             </div>
@@ -592,20 +754,19 @@
                     <div class="item-title">НИУ ВШЭ, Москва</div>
                     <div class="item-meta">2022 — 2026</div>
                   </div>
-                  <div class="item-sub">Образовательная программа «Иностранные языки и межкультурная коммуникация»</div>
+                  <div class="item-sub">Образовательная программа «Иностранные языки и межкультурная коммуникация».</div>
                 </li>
                 <li>
                   <div class="item-title-row">
                     <div class="item-title">Ca’ Foscari University of Venice</div>
                     <div class="item-meta">09.2024 — 02.2025</div>
                   </div>
-                  <div class="item-sub">Международная академическая мобильность, Венеция, Италия</div>
+                  <div class="item-sub">Международная академическая мобильность, Венеция, Италия.</div>
                 </li>
               </ul>
             </div>
           </section>
 
-          <!-- Дополнительное образование -->
           <section class="section">
             <div class="section-header">
               <h2 class="section-title">Дополнительное образование</h2>
@@ -619,24 +780,24 @@
                   </div>
                   <ul class="item-bullets">
                     <li>Трек: International Business Strategies.</li>
-                    <li>Introduction to World Economy and Global Business Environment (2023–2024), оценка 10.</li>
-                    <li>International Strategic Management (2023–2024), оценка 10.</li>
-                    <li>International Marketing (2024–2025).</li>
-                    <li>Financial Decisions in International Companies (2024–2025).</li>
+                    <li>Introduction to World Economy and Global Business Environment, оценка 10.</li>
+                    <li>International Strategic Management, оценка 10.</li>
+                    <li>International Marketing.</li>
+                    <li>Financial Decisions in International Companies.</li>
                   </ul>
                 </li>
 
                 <li>
                   <div class="item-title-row">
                     <div class="item-title">Нетология</div>
-                    <div class="item-meta">2023 — настоящее время</div>
+                    <div class="item-meta">2023 — наст. время</div>
                   </div>
                   <ul class="item-bullets">
-                    <li>«Маркетинговая воронка — как повысить продажи» (2023).</li>
-                    <li>«Профессия: Контент‑менеджер» (2024).</li>
-                    <li>«Основы интернет‑маркетинга» (2024).</li>
-                    <li>«Product‑менеджер: первые навыки в профессии» (2025).</li>
-                    <li>«Как стать менеджером бизнес‑процессов и повысить эффективность компании» (2025).</li>
+                    <li>«Маркетинговая воронка — как повысить продажи».</li>
+                    <li>«Профессия: Контент‑менеджер».</li>
+                    <li>«Основы интернет‑маркетинга».</li>
+                    <li>«Product‑менеджер: первые навыки в профессии».</li>
+                    <li>«Как стать менеджером бизнес‑процессов и повысить эффективность компании».</li>
                   </ul>
                 </li>
 
@@ -688,16 +849,15 @@
                   </div>
                   <ul class="item-bullets">
                     <li>Интенсив «AI в продукт‑менеджменте».</li>
-                    <li>В составе команды за 2 дня разработала стратегию и MVP для AI‑travel‑ассистента.</li>
-                    <li>Провела и проанализировала глубинные интервью, сегментировала ЦА, заложила основы УТП, провела анализ рынка и построила конкурентную карту.</li>
-                    <li>Реализовала запуск MVP в сжатые сроки.</li>
+                    <li>Разработка стратегии и MVP для AI‑travel‑ассистента в составе команды за 2 дня.</li>
+                    <li>Глубинные интервью, сегментация ЦА, формирование УТП, анализ рынка и построение конкурентной карты.</li>
+                    <li>Запуск MVP в сжатые сроки.</li>
                   </ul>
                 </li>
               </ul>
             </div>
           </section>
 
-          <!-- Конференции и публикации -->
           <section class="section">
             <div class="section-header">
               <h2 class="section-title">Конференции и публикации</h2>
@@ -739,7 +899,7 @@
                     <div class="item-title">XIII международная конференция молодых учёных</div>
                     <div class="item-meta">2025</div>
                   </div>
-                  <div class="item-sub">«Актуальные вопросы перевода, лингвистики, истории литературы и фольклора»</div>
+                  <div class="item-sub">«Актуальные вопросы перевода, лингвистики, истории литературы и фольклора».</div>
                   <ul class="item-bullets">
                     <li>Лучший доклад секции. Статья «Оценка применимости модели культурных изменений Хофстеде в корпоративном пространстве».</li>
                   </ul>
@@ -748,7 +908,6 @@
             </div>
           </section>
 
-          <!-- Личные достижения -->
           <section class="section">
             <div class="section-header">
               <h2 class="section-title">Личные достижения</h2>
@@ -768,740 +927,42 @@
       </div>
     </main>
   </div>
-</body>
-</html>      background: radial-gradient(circle at top left, #e0f2fe 0, #f6f9ff 40%, #ffffff 100%);
-      color: var(--text-main);
-    }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 32px 16px 48px;
-    }
+  <script>
+    const sectionsMap = {
+      about: document.getElementById("about"),
+      experience: document.getElementById("experience"),
+      skills: document.getElementById("skills"),
+      education: document.getElementById("education"),
+      extra: document.getElementById("extra"),
+    };
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 32px;
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(22px);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      padding: 28px 28px 32px;
-    }
+    const navLinks = Array.from(document.querySelectorAll(".top-nav__link"));
 
-    @media (min-width: 900px) {
-      .container {
-        padding: 32px 36px 40px;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach((link) => {
+              if (link.dataset.nav === id) {
+                link.classList.add("top-nav__link--active");
+              } else {
+                link.classList.remove("top-nav__link--active");
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: "-55% 0px -40% 0px",
+        threshold: 0.3,
       }
-    }
-
-    .header {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 28px;
-      align-items: center;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 45%, #ffffff 100%);
-      padding: 24px 22px;
-      margin-bottom: 28px;
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 20px 18px;
-      }
-    }
-
-    .header-main-title {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-
-    .name {
-      font-size: clamp(26px, 3vw, 30px);
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      color: #0f172a;
-    }
-
-    .tag-pill {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.07);
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      color: #1d4ed8;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.45;
-    }
-
-    .contacts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .contact-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 11px;
-      border-radius: var(--radius-chip);
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      font-size: 13px;
-      color: var(--text-main);
-    }
-
-    .contact-label {
-      font-weight: 600;
-      color: var(--accent);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .contact-value {
-      font-weight: 500;
-    }
-
-    .photo-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    @media (max-width: 768px) {
-      .photo-wrapper {
-        justify-content: flex-start;
-      }
-    }
-
-    .photo-card {
-      position: relative;
-      padding: 10px;
-      border-radius: 999px;
-      background: radial-gradient(circle at top, #bfdbfe 0, #e5edff 40%, #ffffff 100%);
-      box-shadow: 0 16px 40px rgba(30, 64, 175, 0.25);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .photo-card::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: inherit;
-      border: 1px dashed rgba(59, 130, 246, 0.3);
-      pointer-events: none;
-    }
-
-    .photo {
-      display: block;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #ffffff;
-      z-index: 1;
-    }
-
-    @media (min-width: 1100px) {
-      .photo {
-        width: 170px;
-        height: 170px;
-      }
-    }
-
-    .main-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.35fr);
-      gap: 24px;
-    }
-
-    @media (max-width: 960px) {
-      .main-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .section {
-      background: var(--bg-card);
-      border-radius: var(--radius-l);
-      padding: 16px 18px 17px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #1d4ed8;
-    }
-
-    .section-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .section-body {
-      font-size: 14px;
-      color: var(--text-main);
-    }
-
-    .about-text {
-      line-height: 1.55;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .chip {
-      padding: 5px 10px;
-      border-radius: var(--radius-chip);
-      background: var(--chip-bg);
-      color: var(--chip-text);
-      font-size: 12px;
-      font-weight: 600;
-      border: 1px solid rgba(129, 140, 248, 0.5);
-    }
-
-    .list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .item-title-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 2px;
-    }
-
-    .item-title {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .item-meta {
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .item-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 3px;
-    }
-
-    .item-bullets {
-      margin: 0;
-      padding-left: 18px;
-      font-size: 13px;
-      color: var(--text-main);
-      line-height: 1.45;
-    }
-
-    .item-bullets li + li {
-      margin-top: 2px;
-    }
-
-    .lang-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .lang-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 7px 9px;
-      border-radius: 999px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      font-size: 13px;
-    }
-
-    .badge {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      color: #1d4ed8;
-    }
-
-    .footer-note {
-      margin-top: 18px;
-      font-size: 12px;
-      color: var(--text-muted);
-      text-align: right;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <main class="container">
-      <!-- Шапка -->
-      <header class="header">
-        <div>
-          <div class="header-main-title">
-            <h1 class="name">Плужникова Яна</h1>
-            <div class="tag-pill">Marketing / Product</div>
-          </div>
-          <p class="subtitle">
-            Маркетинговый аналитик и контент‑продюсер с опытом в HR‑маркетинге, диджитал‑коммуникациях и продуктовой аналитике. Ищу возможности развиваться в маркетинге и продукт‑менеджменте.
-          </p>
-          <div class="contacts">
-            <div class="contact-chip">
-              <span class="contact-label">Телефон</span>
-              <span class="contact-value">+7&nbsp;913&nbsp;378‑40‑73</span>
-            </div>
-            <div class="contact-chip">
-              <span class="contact-label">Email</span>
-              <span class="contact-value">pluga3@inbox.ru</span>
-            </div>
-            <div class="contact-chip">
-              <span class="contact-label">Город</span>
-              <span class="contact-value">Москва, Россия</span>
-            </div>
-            <div class="contact-chip">
-              <span class="contact-label">Telegram</span>
-              <span class="contact-value">@yana_ply</span>
-            </div>
-          </div>
-        </div>
-        <div class="photo-wrapper">
-          <div class="photo-card">
-            <!-- Замените путь на актуальный или положите фото рядом с index.html и назовите yana-photo.png -->
-            <img src="yana-photo.png" alt="Портрет Плужниковой Яны" class="photo" />
-          </div>
-        </div>
-      </header>
-
-      <div class="main-grid">
-        <!-- Левая колонка -->
-        <section class="column">
-          <!-- Обо мне -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Обо мне</h2>
-            </div>
-            <div class="section-body about-text">
-              Мои профессиональные интересы связаны с маркетингом и продуктовым менеджментом. Открытость помогает мне находить общий язык с новыми людьми и быть лидером команд, достигающих высоких результатов.
-              Благодаря ответственности и организованности я соблюдаю дедлайны и грамотно распределяю время — своё и команды.
-              Я постоянно развиваюсь и осваиваю новые навыки, чтобы стать востребованным и высококлассным специалистом.
-            </div>
-          </section>
-
-          <!-- Опыт работы -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Опыт работы</h2>
-            </div>
-            <div class="section-body">
-              <ul class="list">
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Маркетинговый аналитик, контент‑продюсер · Яндекс</div>
-                    <div class="item-meta">2025 — настоящее время</div>
-                  </div>
-                  <div class="item-sub">Отдел HR‑маркетинга и бренда работодателя</div>
-                  <ul class="item-bullets">
-                    <li>Глубокий анализ аудитории Telegram‑каналов и эффективности контента по ключевым метрикам для выявления точек роста и формирования контент‑стратегии.</li>
-                    <li>Тестирование гипотез по форматам, времени публикации и механикам вовлечения.</li>
-                    <li>Подготовка регулярных отчётов и дашбордов, формулировка data‑driven рекомендаций по оптимизации контента и эффективности каналов.</li>
-                    <li>Разработка и внедрение SMM‑стратегий, планирование и создание контент‑планов на основе анализа рынка и ЦА.</li>
-                    <li>Координация полного цикла производства контента и команды для своевременного выпуска материалов в соответствии со стратегией.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Стажёр‑маркетолог · Formatta</div>
-                    <div class="item-meta">2025</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Написание текстов для соцсетей, адаптированных под целевую аудиторию, дизайн обложек для постов.</li>
-                    <li>Создание и дизайн страниц сайта, презентаций, гайдов и чек‑листов для увеличения конверсии.</li>
-                    <li>Создание email‑рассылок.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Медиапродвижение Школы иностранных языков НИУ ВШЭ</div>
-                    <div class="item-meta">2024 — настоящее время</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Написание вовлекающих текстов, адаптированных к цифровым платформам.</li>
-                    <li>Поиск и создание визуальных материалов.</li>
-                    <li>Формирование контент‑плана и согласование приоритетных тем и форматов с командой.</li>
-                    <li>Исследование аналитических инструментов для повышения эффективности публикаций.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Цифровой ассистент · НИУ ВШЭ</div>
-                    <div class="item-meta">2023 — 2024</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Адаптация упражнений и заданий для более глубокого освоения тем.</li>
-                    <li>Цифровизация учебного процесса и перенос модулей на платформы электронного обучения.</li>
-                    <li>Техническая координация и сопровождение внедрения новых цифровых инструментов в образовательный процесс.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- Волонтёрство и активность -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Волонтёрство и активность</h2>
-            </div>
-            <div class="section-body">
-              <ul class="list">
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Волонтёрство</div>
-                    <div class="item-meta">2022 — настоящее время</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>«День карьеры» Школы иностранных языков НИУ ВШЭ.</li>
-                    <li>Международная научно‑практическая конференция LED Conference (Languages, Education, Development).</li>
-                    <li>Дни открытых дверей Школы иностранных языков и программы «Иностранные языки и межкультурная коммуникация».</li>
-                    <li>Олимпиада «Высшая проба».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Кураторство первокурсников</div>
-                    <div class="item-meta">2023 — настоящее время</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Помогаю студентам адаптироваться в новой среде, выстраивать коммуникацию с преподавателями и одногруппниками.</li>
-                    <li>Участвую в организации неформальных мероприятий.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Студенческий совет НИУ ВШЭ</div>
-                    <div class="item-meta">2022 — 2023</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Решение вопросов, связанных с дисциплинарными нарушениями студентов.</li>
-                    <li>Помощь в организации различных мероприятий.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </section>
-
-        <!-- Правая колонка -->
-        <section class="column">
-          <!-- Навыки -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Навыки</h2>
-            </div>
-            <div class="section-body">
-              <div class="chips">
-                <span class="chip">Excel</span>
-                <span class="chip">Word</span>
-                <span class="chip">PowerPoint</span>
-                <span class="chip">Python</span>
-                <span class="chip">Figma</span>
-                <span class="chip">Canva</span>
-                <span class="chip">CapCut</span>
-                <span class="chip">Tilda</span>
-                <span class="chip">UniSender</span>
-                <span class="chip">Маркетинг</span>
-                <span class="chip">Аналитика</span>
-                <span class="chip">Продюсирование</span>
-                <span class="chip">SMM</span>
-                <span class="chip">Контент‑маркетинг</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- Языки -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Языки</h2>
-            </div>
-            <div class="section-body">
-              <div class="lang-list">
-                <div class="lang-row">
-                  <span>Русский</span>
-                  <span class="badge">Родной</span>
-                </div>
-                <div class="lang-row">
-                  <span>Английский</span>
-                  <span class="badge">C1</span>
-                </div>
-                <div class="lang-row">
-                  <span>Французский</span>
-                  <span class="badge">B1</span>
-                </div>
-                <div class="lang-row">
-                  <span>Шведский</span>
-                  <span class="badge">B1</span>
-                </div>
-                <div class="lang-row">
-                  <span>Итальянский</span>
-                  <span class="badge">A2</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Образование -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Образование</h2>
-            </div>
-            <div class="section-body">
-              <ul class="list">
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">НИУ ВШЭ, Москва</div>
-                    <div class="item-meta">2022 — 2026</div>
-                  </div>
-                  <div class="item-sub">Образовательная программа «Иностранные языки и межкультурная коммуникация»</div>
-                </li>
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Ca’ Foscari University of Venice</div>
-                    <div class="item-meta">09.2024 — 02.2025</div>
-                  </div>
-                  <div class="item-sub">Международная академическая мобильность, Венеция, Италия</div>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- Дополнительное образование -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Дополнительное образование</h2>
-            </div>
-            <div class="section-body">
-              <ul class="list">
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Майнор НИУ ВШЭ «Мировая экономика и международный бизнес»</div>
-                    <div class="item-meta">2023 — 2025</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Трек: International Business Strategies.</li>
-                    <li>Introduction to World Economy and Global Business Environment (2023–2024), оценка 10.</li>
-                    <li>International Strategic Management (2023–2024), оценка 10.</li>
-                    <li>International Marketing (2024–2025).</li>
-                    <li>Financial Decisions in International Companies (2024–2025).</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Нетология</div>
-                    <div class="item-meta">2023 — настоящее время</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>«Маркетинговая воронка — как повысить продажи» (2023).</li>
-                    <li>«Профессия: Контент‑менеджер» (2024).</li>
-                    <li>«Основы интернет‑маркетинга» (2024).</li>
-                    <li>«Product‑менеджер: первые навыки в профессии» (2025).</li>
-                    <li>«Как стать менеджером бизнес‑процессов и повысить эффективность компании» (2025).</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">VK</div>
-                    <div class="item-meta">2025</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>«Профессия: Продакт‑менеджер».</li>
-                    <li>«Новые медиа: SMM и digital‑маркетинг».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">МГТУ им. Баумана</div>
-                    <div class="item-meta">2025</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Курс «Системная аналитика».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">НИУ ВШЭ</div>
-                    <div class="item-meta">2025</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Курс «Быстрое создание MVP в Data Science», оценка 9.</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">PM Club</div>
-                    <div class="item-meta">2026</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Курс «Проджект‑менеджер 101».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">Центральный Университет</div>
-                    <div class="item-meta">2026</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Интенсив «AI в продукт‑менеджменте».</li>
-                    <li>В составе команды за 2 дня разработала стратегию и MVP для AI‑travel‑ассистента.</li>
-                    <li>Провела и проанализировала глубинные интервью, сегментировала ЦА, заложила основы УТП, провела анализ рынка и построила конкурентную карту.</li>
-                    <li>Реализовала запуск MVP в сжатые сроки.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- Конференции и публикации -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Конференции и публикации</h2>
-            </div>
-            <div class="section-body">
-              <ul class="list">
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">VIII межвузовская онлайн‑конференция «Пространство научных интересов…»</div>
-                    <div class="item-meta">2023</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Лучший доклад секции. Статья «Ономастическое пространство художественного текста: переводческий аспект».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">XIX Международная конференция «La France et la Francophonie d’aujourd’hui»</div>
-                    <div class="item-meta">2024</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Лучший доклад секции. Статья «Influence de la culture française sur la russe moderne».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">XX Международная конференция «La France et la Francophonie d’aujourd’hui»</div>
-                    <div class="item-meta">2025</div>
-                  </div>
-                  <ul class="item-bullets">
-                    <li>Лучший доклад секции. Статья «Marketing transnational: localisation linguoculturelle d’entreprises américaines en France».</li>
-                  </ul>
-                </li>
-
-                <li>
-                  <div class="item-title-row">
-                    <div class="item-title">XIII международная конференция молодых учёных</div>
-                    <div class="item-meta">2025</div>
-                  </div>
-                  <div class="item-sub">«Актуальные вопросы перевода, лингвистики, истории литературы и фольклора»</div>
-                  <ul class="item-bullets">
-                    <li>Лучший доклад секции. Статья «Оценка применимости модели культурных изменений Хофстеде в корпоративном пространстве».</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- Личные достижения -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Личные достижения</h2>
-            </div>
-            <div class="section-body">
-              <ul class="item-bullets">
-                <li>Благодарность от Школы иностранных языков НИУ ВШЭ за активное участие во внеучебной деятельности и помощь в проведении мероприятий.</li>
-                <li>Кандидат в мастера спорта по фехтованию на саблях.</li>
-              </ul>
-            </div>
-          </section>
-        </section>
-      </div>
-
-      <div class="footer-note">
-        Доступна к стажировкам и проектной работе в сфере маркетинга и продукт‑менеджмента.
-      </div>
-    </main>
-  </div>
+    );
+
+    Object.values(sectionsMap).forEach((section) => {
+      if (section) observer.observe(section);
+    });
+  </script>
 </body>
 </html>
